@@ -1,5 +1,3 @@
-const sayHello = () => 'Hello World!';
+const { createDb } = require('./clickhouse');
 
-module.exports = {
-  sayHello,
-};
+createDb().catch((e) => { throw new Error(e); });

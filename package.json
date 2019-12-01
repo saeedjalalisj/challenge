@@ -4,7 +4,8 @@
   "description": "node basic boilerplate",
   "main": "index.js",
   "scripts": {
-    "test": "jest --testTimeout=10000"
+    "test": "jest --testTimeout=10000",
+	"start": "node index.js"
   },
   "jest": {
     "testEnvironment": "node",
