@@ -2,10 +2,10 @@
   "name": "node-basic-boilerplate",
   "version": "1.0.0",
   "description": "node basic boilerplate",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "jest --testTimeout=10000",
-	"start": "node index.js"
+    "start": "node src/index.js"
   },
   "jest": {
     "testEnvironment": "node",
@@ -51,6 +51,7 @@
     "lint-staged": "^9.5.0"
   },
   "dependencies": {
-    "@apla/clickhouse": "^1.6.1"
+    "@apla/clickhouse": "^1.6.1",
+    "chance": "^1.1.3"
   }
 }
