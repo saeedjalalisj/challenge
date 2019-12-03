@@ -14,6 +14,7 @@ async function createDb() {
 }
 
 async function insertToDb() {
+  console.log('writing to db start');
   const readStream = fs.createReadStream('data.csv');
   const clickHouseStream = clickHouse.query('INSERT INTO my_database.event FORMAT CSV');
   await pipeline(readStream, clickHouseStream);

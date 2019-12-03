@@ -2,6 +2,7 @@ const fs = require('fs');
 const { createObject } = require('./utils');
 
 async function createCsvFile(size) {
+  console.log('starting create file');
   const writeStream = fs.createWriteStream('data.csv');
   for (let i = 0; i <= size; i += 1) {
     const fakeObj = createObject();
@@ -12,7 +13,7 @@ async function createCsvFile(size) {
     }
     // last item of json don't need comma
   }
-  writeStream.end(() => console.log('finished!'));
+  writeStream.end(() => console.log('file created!'));
 }
 
 module.exports = {
