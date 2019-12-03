@@ -1,6 +1,12 @@
-const { createDb } = require('./clickhouse');
-const { createFile } = require('./create-json');
+const { createDb, insertToDb } = require('./clickhouse');
+const { createCsvFile } = require('./create-csv');
 
-createDb().catch((e) => { throw new Error(e); });
-
-createFile(1e7);
+(async function run() {
+  try {
+    await createDb();
+    await createCsvFile(1e7);
+    await insertToDb();
+  } catch (e) {
+    throw new Error(e);
+  }
+}());

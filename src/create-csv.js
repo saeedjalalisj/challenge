@@ -1,32 +1,20 @@
 const fs = require('fs');
-const chance = require('chance').Chance();
+const { createObject } = require('./utils');
 
-function createObject() {
-  return {
-    id: chance.integer({ min: 0 }),
-    name: chance.name(),
-    date: new Date().toISOString().split('T')[0],
-    data: {
-      id: chance.integer({ min: 0 }),
-    },
-    platform: chance.word(),
-  };
-}
-
-async function createFile(size) {
-  const wstream = fs.createWriteStream('data.csv');
-  for (let i = size; i >= 0; i -= 1) {
+async function createCsvFile(size) {
+  const writeStream = fs.createWriteStream('data.csv');
+  for (let i = 0; i <= size; i += 1) {
     const fakeObj = createObject();
-    if (!wstream.write(`${fakeObj.id}, ${fakeObj.name}, ${fakeObj.date}, [${fakeObj.data.id}], ${fakeObj.platform}\n`)) {
+    const isCanWrite = writeStream.write(`${fakeObj.id}, ${fakeObj.name}, ${fakeObj.date}, [${fakeObj.data.id}], ${fakeObj.platform}\n`);
+    if (!isCanWrite) {
       // eslint-disable-next-line no-await-in-loop
-      await new Promise((resolve) => wstream.once('drain', resolve));
+      await new Promise((resolve) => writeStream.once('drain', resolve));
     }
-    wstream.write(`${fakeObj.id}, ${fakeObj.name}, ${fakeObj.date}, [${fakeObj.data.id}], ${fakeObj.platform}\n`);
     // last item of json don't need comma
   }
-  wstream.end(() => console.log('finished!'));
+  writeStream.end(() => console.log('finished!'));
 }
 
 module.exports = {
-  createFile,
+  createCsvFile,
 };
