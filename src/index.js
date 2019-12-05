@@ -1,3 +1,4 @@
+require('dotenv').config();
 const { createDb, insertToDb, streamQuery } = require('./clickhouse');
 const { createCsvFile } = require('./create-csv');
 const { benchmark } = require('./utils');

@@ -13,6 +13,11 @@ git clone git@github.com:saeedjalalisj/challenge.git
 npm install
 ```
 #### Usage
+create `.env file` and add
+```
+DB_HOST=localhost # add clickhouse host
+... # if you need add other config
+```
 ```$xslt
 npm start
 ```

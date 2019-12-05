@@ -4,7 +4,8 @@ const stream = require('stream');
 const ClickHouse = require('@apla/clickhouse');
 
 const pipeline = util.promisify(stream.pipeline);
-const clickHouse = new ClickHouse({ host: 'localhost' });
+// only host is required
+const clickHouse = new ClickHouse({ host: process.env.DB_HOST });
 
 /**
  * function to create database and event
