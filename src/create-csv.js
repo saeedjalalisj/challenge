@@ -1,14 +1,15 @@
 const fs = require('fs');
-const { createObject } = require('./utils');
+const { chanceFactory } = require('./utils');
 
 async function createCsvFile(size) {
-  console.log('starting create file');
+  console.log('create file -> start');
   const writeStream = fs.createWriteStream('data.csv');
   for (let i = 0; i <= size; i += 1) {
-    const fakeObj = createObject();
-    const isCanWrite = writeStream.write(`${fakeObj.id}, ${fakeObj.name}, ${fakeObj.date}, [${fakeObj.data.id}], ${fakeObj.platform}\n`);
+    const fakeObj = chanceFactory();
+    const isCanWrite = writeStream.write(
+      `${fakeObj.id}, ${fakeObj.name}, ${fakeObj.date}, [${fakeObj.data.id}], ${fakeObj.platform}\n`,
+    );
     if (!isCanWrite) {
-      // eslint-disable-next-line no-await-in-loop
       await new Promise((resolve) => writeStream.once('drain', resolve));
     }
   }

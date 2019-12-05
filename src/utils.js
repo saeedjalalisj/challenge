@@ -1,6 +1,6 @@
 const chance = require('chance').Chance();
 
-function createObject() {
+function chanceFactory() {
   return {
     id: chance.integer({ min: 0 }),
     name: chance.name(),
@@ -18,11 +18,11 @@ async function benchmark(fn, ...params) {
   await fn(...params);
   const end = new Date() - start;
   const hrend = process.hrtime(hrstart);
-  console.info(`Execution time ${fn.name} function: %dms`, end);
-  console.info(`Execution time ${fn.name} function (hr) %ds  %dms`, hrend[0], hrend[1] / 1000000);
+  console.info(`Execution time -> ${fn.name} : %dms`, end);
+  console.info(`Execution time -> ${fn.name} (hr) %ds  %dms`, hrend[0], hrend[1] / 1000000);
 }
 
 module.exports = {
-  createObject,
+  chanceFactory,
   benchmark,
 };
