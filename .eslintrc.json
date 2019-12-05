@@ -15,6 +15,7 @@
         "ecmaVersion": 2018
     },
     "rules": {
-	  "no-tabs": "warn"
+	  "no-tabs": "warn",
+	  "no-await-in-loop": "warn"
     }
 }

@@ -1,7 +1,11 @@
 const { createDb, insertToDb, streamQuery } = require('./clickhouse');
 const { createCsvFile } = require('./create-csv');
 const { benchmark } = require('./utils');
-
+/**
+ * This query calculate each name how many time occur
+ * Also calculate percentage of occurrence
+ * @type {string}
+ */
 const sql = `
     SELECT name,
        name_count,
@@ -19,6 +23,9 @@ const sql = `
 					)
 		ORDER BY name_count DESC`;
 
+/**
+ * main function of app
+ */
 (async function run() {
   try {
     await createDb();
