@@ -1,18 +1,18 @@
 # Challenge App
 ##### Simple app to write 10m record into clickhouse database
 
-####requirement
+#### Requirement
 
 + Node.js `>=8`
 
 + Clickhouse
-#### installation
+#### Installation
 
 ```
 git clone git@github.com:saeedjalalisj/challenge.git
 npm install
 ```
-#### usage
+#### Usage
 ```$xslt
 npm start
 ```
@@ -27,3 +27,12 @@ How long run funnel query?
 ```$xslt
 3.413637626
 ```
+> This result may be change on other device
+
+**This test run on:**
+
+Linux/ubuntu-19.04
+
+7856MiB System memory
+
+Intel(R) Core(TM) i7-4710HQ CPU @ 2.50GHz (Quad Core)
