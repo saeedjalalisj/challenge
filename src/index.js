@@ -1,4 +1,4 @@
-const { createDb, insertToDb } = require('./clickhouse');
+const { createDb, insertToDb, streamQuery } = require('./clickhouse');
 const { createCsvFile } = require('./create-csv');
 const { benchmark } = require('./utils');
 
@@ -7,6 +7,7 @@ const { benchmark } = require('./utils');
     await createDb();
     await benchmark(createCsvFile, 1e7);
     await benchmark(insertToDb);
+    streamQuery('SELECT * FROM my_database.event LIMIT 1000000');
   } catch (e) {
     throw new Error(e);
   }

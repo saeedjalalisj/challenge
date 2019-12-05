@@ -4,7 +4,6 @@ const util = require('util');
 const stream = require('stream');
 
 const pipeline = util.promisify(stream.pipeline);
-
 const clickHouse = new ClickHouse({ host: 'localhost' });
 
 async function createDb() {
@@ -20,7 +19,19 @@ async function insertToDb() {
   await pipeline(readStream, clickHouseStream);
 }
 
+function streamQuery(sql) {
+  const recordStream = clickHouse.query(sql);
+  const rows = [];
+  recordStream.on('data', (row) => rows.push(row));
+  recordStream.on('error', (err) => { console.log('err:', err); });
+  recordStream.on('end', () => {
+    console.log(rows.length);
+    console.log(`timing: ${recordStream.supplemental.statistics.elapsed}`);
+  });
+}
+
 module.exports = {
   createDb,
   insertToDb,
+  streamQuery,
 };

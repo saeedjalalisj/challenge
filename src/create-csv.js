@@ -11,7 +11,6 @@ async function createCsvFile(size) {
       // eslint-disable-next-line no-await-in-loop
       await new Promise((resolve) => writeStream.once('drain', resolve));
     }
-    // last item of json don't need comma
   }
   writeStream.end(() => console.log('file created!'));
 }
