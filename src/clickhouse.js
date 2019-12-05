@@ -23,9 +23,9 @@ function streamQuery(sql) {
   const recordStream = clickHouse.query(sql);
   const rows = [];
   recordStream.on('data', (row) => rows.push(row));
-  recordStream.on('error', (err) => { console.log('err:', err); });
+  recordStream.on('error', (err) => { throw new Error(err); });
   recordStream.on('end', () => {
-    console.log(rows.length);
+    console.log(`row count: ${rows.length}`);
     console.log(`timing: ${recordStream.supplemental.statistics.elapsed}`);
   });
 }
