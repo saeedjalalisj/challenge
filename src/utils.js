@@ -1,5 +1,9 @@
 const chance = require('chance').Chance();
 
+/**
+ * function to create fake object
+ * @returns {{date: string, data: {id: *}, name: *, id: *, platform: *}}
+ */
 function chanceFactory() {
   return {
     id: chance.integer({ min: 0 }),
@@ -12,6 +16,12 @@ function chanceFactory() {
   };
 }
 
+/**
+ *
+ * @param fn pass function to check excution time
+ * @param params pass fn argument
+ * @returns {Promise<void>}
+ */
 async function benchmark(fn, ...params) {
   const start = new Date();
   const hrstart = process.hrtime();

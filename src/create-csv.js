@@ -1,6 +1,12 @@
 const fs = require('fs');
 const { chanceFactory } = require('./utils');
 
+/**
+ * a function for create CSV file
+ * use CSV file for inserting large data into clickhouse
+ * @param size of how many record insert to file
+ * @returns {Promise<void>}
+ */
 async function createCsvFile(size) {
   console.log('create file -> start');
   const writeStream = fs.createWriteStream('data.csv');

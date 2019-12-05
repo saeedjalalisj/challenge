@@ -6,6 +6,10 @@ const ClickHouse = require('@apla/clickhouse');
 const pipeline = util.promisify(stream.pipeline);
 const clickHouse = new ClickHouse({ host: 'localhost' });
 
+/**
+ * function to create database and event
+ * @returns {Promise<void>}
+ */
 async function createDb() {
   await clickHouse.querying('CREATE DATABASE IF NOT EXISTS my_database');
   await clickHouse
@@ -21,6 +25,10 @@ async function createDb() {
     `);
 }
 
+/**
+ * function to insert data into database
+ * @returns {Promise<void>}
+ */
 async function insertToDb() {
   console.log('writing to db -> start');
   const readStream = fs.createReadStream('data.csv');
@@ -28,6 +36,11 @@ async function insertToDb() {
   await pipeline(readStream, clickHouseStream);
 }
 
+/**
+ * function to run query
+ * this function run query as a stream
+ * @param sql statement
+ */
 function streamQuery(sql) {
   const recordStream = clickHouse.query(sql);
   const rows = [];

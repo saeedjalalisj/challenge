@@ -19,6 +19,9 @@ const sql = `
 					)
 		ORDER BY name_count DESC`;
 
+/**
+ * main function of app
+ */
 (async function run() {
   try {
     await createDb();
