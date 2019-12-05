@@ -9,7 +9,8 @@
 #### Installation
 
 ```
-git clone git@github.com:saeedjalalisj/challenge.git
+git clone git@github.com:saeedjalalisj/challenge.git app
+cd app
 npm install
 ```
 #### Usage
