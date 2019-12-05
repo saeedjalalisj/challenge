@@ -18,6 +18,7 @@ create `.env file` and add
 DB_HOST=localhost # add clickhouse host
 ... # if you need add other config
 ```
+for run the app:
 ```$xslt
 npm start
 ```
